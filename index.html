@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Voor Semra</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤝</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --nacht:  #12161d;   /* achtergrond boven */
+    --diep:   #1a2029;   /* achtergrond onder */
+    --krijt:  #e9e4da;   /* tekst, warm off-white */
+    --grijs:  #8a93a1;   /* subtekst, staalgrijs */
+    --amber:  #f0a03c;   /* dé accentkleur */
+    --lijn:   #2c3440;   /* randen */
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body { height: 100%; }
+
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    color: var(--krijt);
+    background: linear-gradient(180deg, var(--nacht) 0%, var(--diep) 100%);
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  main {
+    width: min(92vw, 34rem);
+    text-align: center;
+    padding: 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .screen {
+    display: none;
+    animation: arrive .4s ease-out;
+  }
+  .screen.active { display: block; }
+  @keyframes arrive {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .eyebrow {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    font-size: .75rem;
+    color: var(--amber);
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 8vw, 3.1rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  h1 em { font-style: normal; color: var(--amber); }
+
+  .sub {
+    font-size: 1.02rem;
+    line-height: 1.55;
+    margin-bottom: 2rem;
+    color: var(--grijs);
+  }
+
+  .knoppen {
+    display: flex;
+    gap: .8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  button {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 1.02rem;
+    border-radius: .6rem;
+    padding: .85rem 2.2rem;
+    cursor: pointer;
+    transition: transform .15s ease, background .15s ease, opacity .3s ease;
+    touch-action: manipulation;
+  }
+  button:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+  button:active { transform: scale(.97); }
+
+  .ja {
+    background: var(--amber);
+    color: #16130c;
+    border: none;
+  }
+  .ja:hover { background: #ffb554; }
+
+  .nee {
+    background: transparent;
+    color: var(--grijs);
+    border: 1px solid var(--lijn);
+  }
+  .nee:hover { color: var(--krijt); }
+
+  /* De wegrennende Nee-knop krijgt vrij baan over het hele scherm */
+  #neeChill.los { position: fixed; margin: 0; z-index: 5; transition: left .22s ease, top .22s ease, transform .18s ease; }
+
+  input[type="text"] {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    text-align: center;
+    color: var(--krijt);
+    background: #0d1117;
+    border: 1px solid var(--lijn);
+    border-radius: .6rem;
+    padding: .95rem 1.1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    caret-color: var(--amber);
+  }
+  input[type="text"]:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+  .hint { font-size: .82rem; color: var(--grijs); margin-bottom: 1.4rem; }
+
+  .mega {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: clamp(3rem, 14vw, 4.6rem);
+    color: var(--amber);
+    letter-spacing: -0.02em;
+    margin-bottom: .8rem;
+    animation: boing .5s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes boing { from { transform: scale(.4); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+  .confetto {
+    position: fixed;
+    top: -4vh;
+    width: 8px;
+    height: 14px;
+    border-radius: 2px;
+    pointer-events: none;
+    animation: vallen linear forwards;
+  }
+  @keyframes vallen {
+    to { transform: translateY(110vh) rotate(660deg); opacity: .9; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .confetto { display: none; }
+    .screen, .mega { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<main>
+  <!-- 1 · terug van vakantie? -->
+  <section class="screen active" id="s1">
+    <p class="eyebrow">Semra</p>
+    <h1>Ben je al terug van <em>vakantie?</em></h1>
+    <p class="sub" id="s1sub">Even checken.</p>
+    <div class="knoppen">
+      <button class="ja" id="jaTerug">Ja</button>
+      <button class="nee" id="neeTerug">Nee</button>
+    </div>
+  </section>
+
+  <!-- 2 · opbouw -->
+  <section class="screen" id="s2">
+    <h1>Goed. Ik heb een <em>vraag.</em></h1>
+    <p class="sub">Eén maar.</p>
+    <div class="knoppen">
+      <button class="ja" id="vertel">Kom maar op</button>
+    </div>
+  </section>
+
+  <!-- 3 · de vraag -->
+  <section class="screen" id="s3">
+    <h1>GAAN WIJ NOG <em>MEETEN?????</em></h1>
+    <p class="sub" id="s3sub">Ik weet iets goeds.</p>
+    <div class="knoppen">
+      <button class="ja" id="jaChill">Ja</button>
+      <button class="nee" id="neeChill">Nee</button>
+    </div>
+  </section>
+
+  <!-- 4 · zelf typen -->
+  <section class="screen" id="s4">
+    <h1>Zeg het in je <em>eigen woorden</em></h1>
+    <p class="sub">Alle ruimte.</p>
+    <input type="text" id="antwoord" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Typ maar&hellip;" />
+    <p class="hint" id="typHint">Dit toetsenbord is 100% objectief.</p>
+    <div class="knoppen">
+      <button class="ja" id="verstuur" style="display:none;">Verstuur</button>
+    </div>
+  </section>
+
+  <!-- 5 · finale -->
+  <section class="screen" id="s5">
+    <div class="mega">Deal.</div>
+    <h1>Dat dacht ik <em>ook.</em></h1>
+    <p class="sub">WhatsApp staat al voor je klaar — alleen nog op verzenden tikken.<br />
+      <a id="waLink" href="#" style="color: var(--amber); font-weight: 600;">Niet geopend? Tik hier.</a>
+    </p>
+  </section>
+</main>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  const toon = (id) => {
+    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+    $(id).classList.add("active");
+  };
+
+  /* ── 1 · terug van vakantie ── */
+  $("jaTerug").addEventListener("click", () => toon("s2"));
+  $("neeTerug").addEventListener("click", () => {
+    $("s1sub").textContent = "Volgens mij wel. Nog een keer.";
+    $("neeTerug").style.display = "none";
+    $("jaTerug").textContent = "Oké, ja";
+  });
+
+  /* ── 2 · opbouw ── */
+  $("vertel").addEventListener("click", () => { toon("s3"); resetNee(); });
+
+  /* ── 3 · de wegrennende Nee-knop ── */
+  const nee = $("neeChill");
+  const jaChill = $("jaChill");
+  const labels = ["Nee", "Zeker weten?", "Echt?", "Laatste kans"];
+  let pogingen = 0;
+  let gewapendOp = 0;
+
+  // Vers scherm = verse knoppen: Nee netjes naast Ja, en een korte wapentijd
+  // zodat de cursor die toevallig al op die plek staat (na "Kom maar op")
+  // de knop niet meteen laat vluchten.
+  function resetNee() {
+    pogingen = 0;
+    nee.textContent = labels[0];
+    nee.classList.remove("los");
+    nee.style.cssText = "";
+    nee.style.display = "";
+    jaChill.style.transform = "";
+    gewapendOp = Date.now() + 600;
+  }
+
+  function vlucht() {
+    if (Date.now() < gewapendOp) return;
+    pogingen++;
+
+    if (pogingen >= labels.length) {
+      nee.style.transform = "scale(0)";
+      setTimeout(() => { nee.style.display = "none"; }, 200);
+      $("s3sub").textContent = "De Nee knop is ook op vakantie gegaan 🤣";
+      return;
+    }
+
+    nee.textContent = labels[pogingen];
+    nee.classList.add("los");
+
+    const b = nee.getBoundingClientRect();
+    const x = 8 + Math.random() * (window.innerWidth  - b.width  - 16);
+    const y = 8 + Math.random() * (window.innerHeight - b.height - 16);
+    nee.style.left = x + "px";
+    nee.style.top  = y + "px";
+
+    jaChill.style.transform = `scale(${1 + pogingen * 0.15})`;
+  }
+
+  nee.addEventListener("pointerenter", vlucht);
+  nee.addEventListener("touchstart", (e) => { e.preventDefault(); vlucht(); }, { passive: false });
+  nee.addEventListener("click", vlucht);
+
+  $("jaChill").addEventListener("click", () => toon("s4"));
+
+  /* ── 4 · het 100% objectieve toetsenbord ── */
+  const doel = "Laten we dat doen";
+  const veld = $("antwoord");
+
+  veld.addEventListener("input", () => {
+    const len = Math.min(veld.value.length, doel.length);
+    veld.value = doel.slice(0, len);
+    if (len >= doel.length) {
+      $("verstuur").style.display = "inline-block";
+      $("typHint").textContent = "Kijk. We zijn het eens.";
+    } else {
+      $("verstuur").style.display = "none";
+    }
+  });
+
+  /* ── WhatsApp: opent haar WhatsApp met het antwoord al ingevuld, gericht
+     aan jou. Automatisch verzenden kan technisch niet (WhatsApp-restrictie);
+     zij hoeft alleen nog op het verzendpijltje te tikken.
+     VUL HIER JE EIGEN NUMMER IN — internationaal formaat zonder + of spaties,
+     dus 06 12 34 56 78 wordt 31612345678. */
+  const WHATSAPP_NUMMER = "31648170431";
+  const waUrl = "https://wa.me/" + WHATSAPP_NUMMER + "?text=" + encodeURIComponent(doel);
+  $("waLink").href = waUrl;
+
+  $("verstuur").addEventListener("click", () => {
+    toon("s5");
+    feest();
+    window.open(waUrl, "_blank");
+  });
+
+  /* ── 5 · confetti, in stijl ── */
+  function feest() {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const kleuren = ["#f0a03c", "#e9e4da", "#8a93a1"];
+    for (let i = 0; i < 70; i++) {
+      const c = document.createElement("span");
+      c.className = "confetto";
+      c.style.left = Math.random() * 100 + "vw";
+      c.style.background = kleuren[i % kleuren.length];
+      c.style.animationDuration = 2.2 + Math.random() * 2.2 + "s";
+      c.style.animationDelay = Math.random() * 0.6 + "s";
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 6000);
+    }
+  }
+</script>
+</body>
+</html>
