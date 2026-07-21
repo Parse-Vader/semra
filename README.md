@@ -1,6 +1,6 @@
 # Voor Semra 🍉
 
-Kleine one-page grap om Semra mee uit te vragen. Eén `index.html`, geen dependencies.
+Kleine one-page grap om Semra te laten flexen. Eén `index.html`, geen dependencies.
 
 ## Online zetten met GitHub Pages
 
