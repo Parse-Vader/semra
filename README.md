@@ -1,6 +1,6 @@
-# Voor Semra 🍉
+# Voor Mevrouw Meray 🍉
 
-Kleine one-page grap om Semra te laten flexen. Eén `index.html`, geen dependencies.
+Kleine one-page grap om Mevrouw Meray te laten flexen. Eén `index.html`, geen dependencies.
 
 ## Online zetten met GitHub Pages
 
